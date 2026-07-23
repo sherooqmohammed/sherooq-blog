@@ -102,14 +102,16 @@
 <script>
   var FEEDS = {
     tech: "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en",
-    kerala: "https://news.google.com/rss/headlines/section/geo/Kerala?hl=en-IN&gl=IN&ceid=IN:en",
-    uae: "https://news.google.com/rss/headlines/section/geo/United%20Arab%20Emirates?hl=en-AE&gl=AE&ceid=AE:en",
-    germany: "https://news.google.com/rss/headlines/section/geo/Germany?hl=en-US&gl=DE&ceid=DE:en"
+    kerala: "https://news.google.com/rss/search?q=Kerala%20when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+    uae: "https://news.google.com/rss/search?q=UAE%20when:2d&hl=en-AE&gl=AE&ceid=AE:en",
+    germany: "https://news.google.com/rss/search?q=Germany%20when:2d&hl=en-US&gl=DE&ceid=DE:en"
   };
+  // Stagger the 4 requests slightly instead of firing them all in the same
+  // instant — avoids piling up simultaneous cold-starts on the proxy.
   BlogNews.renderHomeCard(document.getElementById("home-tech"), "tech", FEEDS.tech, 4);
-  BlogNews.renderHomeCard(document.getElementById("home-kerala"), "kerala", FEEDS.kerala, 4);
-  BlogNews.renderHomeCard(document.getElementById("home-uae"), "uae", FEEDS.uae, 4);
-  BlogNews.renderHomeCard(document.getElementById("home-germany"), "germany", FEEDS.germany, 4);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-kerala"), "kerala", FEEDS.kerala, 4); }, 200);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-uae"), "uae", FEEDS.uae, 4); }, 400);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-germany"), "germany", FEEDS.germany, 4); }, 600);
 </script>
 </body>
 </html>
