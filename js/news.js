@@ -12,15 +12,32 @@
   // Cache results for this many minutes before re-fetching from network.
   var CACHE_MINUTES = 60;
 
-  // Fallback chain of RSS->JSON / CORS services. If one is down or
-  // rate-limited, the next is tried automatically.
+  // Fallback chain of proxy services. If one is down, slow, or
+  // rate-limited, the next is tried automatically. The site's own
+  // /api/news serverless endpoint (only live when hosted on Vercel)
+  // is tried first since it has no CORS/rate-limit issues; the rest
+  // are public fallbacks that also work when the site is opened
+  // straight from disk (no server).
   function candidateUrls(feedUrl) {
     var encoded = encodeURIComponent(feedUrl);
     return [
-      { type: "rss2json", url: "https://api.rss2json.com/v1/api.json?rss_url=" + encoded },
+      { type: "xml", url: "/api/news?url=" + encoded },
       { type: "xml", url: "https://api.allorigins.win/raw?url=" + encoded },
+      { type: "rss2json", url: "https://api.rss2json.com/v1/api.json?rss_url=" + encoded },
       { type: "xml", url: "https://corsproxy.io/?url=" + encoded }
     ];
+  }
+
+  // Give each candidate a limited window to respond so one slow/hanging
+  // proxy doesn't stall the whole fallback chain.
+  var FETCH_TIMEOUT_MS = 6000;
+
+  function fetchWithTimeout(url) {
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, FETCH_TIMEOUT_MS);
+    return fetch(url, { cache: "no-store", signal: controller.signal }).finally(function () {
+      clearTimeout(timer);
+    });
   }
 
   function parseXml(text) {
@@ -42,7 +59,7 @@
   }
 
   function fetchOne(candidate) {
-    return fetch(candidate.url, { cache: "no-store" }).then(function (res) {
+    return fetchWithTimeout(candidate.url).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       if (candidate.type === "rss2json") {
         return res.json().then(function (json) {
