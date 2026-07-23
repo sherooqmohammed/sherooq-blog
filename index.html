@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sherooq — Blog</title>
-<meta name="description" content="Personal blog with daily-updating Tech, Kerala, UAE, and Germany news sections.">
+<meta name="description" content="Personal blog with daily-updating Tech, AI, Software Engineering, Dev Tools, Kerala, UAE, and Germany news sections.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,6 +17,9 @@
       <a href="index.html">Home</a>
       <a href="blog.html">Blog</a>
       <a href="news/tech.html">Tech</a>
+      <a href="news/ai.html">AI</a>
+      <a href="news/software-engineering.html">Software Eng</a>
+      <a href="news/dev-tools.html">Dev Tools</a>
       <a href="news/kerala.html">Kerala</a>
       <a href="news/uae.html">UAE</a>
       <a href="news/germany.html">Germany</a>
@@ -27,7 +30,7 @@
 <section class="hero">
   <div class="wrap">
     <h1>Hi, I'm Sherooq.</h1>
-    <p>This is my personal blog — plus four news sections (Tech, Kerala, UAE, and Germany) that refresh automatically every day. Edit this intro in <code>index.html</code> to make it your own.</p>
+    <p>This is my personal blog — plus seven news sections (Tech, AI, Software Engineering, Dev Tools &amp; Languages, Kerala, UAE, and Germany) that refresh automatically every day. Edit this intro in <code>index.html</code> to make it your own.</p>
   </div>
 </section>
 
@@ -61,6 +64,21 @@
       <div class="news-card tech-accent">
         <h3><a href="news/tech.html">Tech</a></h3>
         <div id="home-tech" class="loading">Loading…</div>
+      </div>
+
+      <div class="news-card ai-accent">
+        <h3><a href="news/ai.html">AI</a></h3>
+        <div id="home-ai" class="loading">Loading…</div>
+      </div>
+
+      <div class="news-card swe-accent">
+        <h3><a href="news/software-engineering.html">Software Eng</a></h3>
+        <div id="home-swe" class="loading">Loading…</div>
+      </div>
+
+      <div class="news-card devtools-accent">
+        <h3><a href="news/dev-tools.html">Dev Tools</a></h3>
+        <div id="home-devtools" class="loading">Loading…</div>
       </div>
 
       <div class="news-card kerala-accent">
@@ -102,16 +120,22 @@
 <script>
   var FEEDS = {
     tech: "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en",
+    ai: "https://news.google.com/rss/search?q=artificial%20intelligence%20when:1d&hl=en-US&gl=US&ceid=US:en",
+    swe: "https://news.google.com/rss/search?q=software%20engineering%20when:2d&hl=en-US&gl=US&ceid=US:en",
+    devtools: "https://news.google.com/rss/search?q=programming%20language%20OR%20developer%20tool%20when:3d&hl=en-US&gl=US&ceid=US:en",
     kerala: "https://news.google.com/rss/search?q=Kerala%20when:2d&hl=en-IN&gl=IN&ceid=IN:en",
     uae: "https://news.google.com/rss/search?q=UAE%20when:2d&hl=en-AE&gl=AE&ceid=AE:en",
     germany: "https://news.google.com/rss/search?q=Germany%20when:2d&hl=en-US&gl=DE&ceid=DE:en"
   };
-  // Stagger the 4 requests slightly instead of firing them all in the same
+  // Stagger the 7 requests slightly instead of firing them all in the same
   // instant — avoids piling up simultaneous cold-starts on the proxy.
   BlogNews.renderHomeCard(document.getElementById("home-tech"), "tech", FEEDS.tech, 4);
-  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-kerala"), "kerala", FEEDS.kerala, 4); }, 200);
-  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-uae"), "uae", FEEDS.uae, 4); }, 400);
-  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-germany"), "germany", FEEDS.germany, 4); }, 600);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-ai"), "ai", FEEDS.ai, 4); }, 150);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-swe"), "swe", FEEDS.swe, 4); }, 300);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-devtools"), "devtools", FEEDS.devtools, 4); }, 450);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-kerala"), "kerala", FEEDS.kerala, 4); }, 600);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-uae"), "uae", FEEDS.uae, 4); }, 750);
+  setTimeout(function () { BlogNews.renderHomeCard(document.getElementById("home-germany"), "germany", FEEDS.germany, 4); }, 900);
 </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Sherooq's Blog
 
-A simple personal blog with four self-updating news sections: **Tech**, **Kerala**, **UAE**, and **Germany**.
+A simple personal blog with seven self-updating news sections: **Tech**, **AI**, **Software Engineering**, **Dev Tools & Languages**, **Kerala**, **UAE**, and **Germany**.
 
 ## How it's organized
 
@@ -10,8 +10,11 @@ blog.html            Full list of blog posts
 posts/               Individual blog post pages
   post-1.html
   post-2.html
-news/                The four news sections
+news/                The seven news sections
   tech.html
+  ai.html
+  software-engineering.html
+  dev-tools.html
   kerala.html
   uae.html
   germany.html
