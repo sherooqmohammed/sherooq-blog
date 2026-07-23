@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How This Site Keeps Its News Sections Fresh — Sherooq</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="site-title">Sherooq</a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav">
+      <a href="../index.html">Home</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../news/tech.html">Tech</a>
+      <a href="../news/kerala.html">Kerala</a>
+      <a href="../news/uae.html">UAE</a>
+      <a href="../news/germany.html">Germany</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap section">
+  <article class="post-body">
+    <h1>How This Site Keeps Its News Sections Fresh</h1>
+    <div class="post-meta">Published July 2026 &middot; Site notes</div>
+
+    <p>The Tech, Kerala, UAE, and Germany sections on this site aren't written by hand — each page pulls live headlines the moment it's opened, so it's always showing the latest stories without any manual updating.</p>
+
+    <p>Behind the scenes, each section is wired to a Google News feed for that topic or region. When you visit a news page, a small script fetches the current headlines and displays them, then remembers them for an hour so the page loads instantly on repeat visits.</p>
+
+    <h2>Why this approach</h2>
+    <p>It means zero maintenance — no daily copy-pasting, no server to keep running, and no API keys to manage. As long as the page is opened (or left open and refreshed) at least once a day, the content stays current.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; <span data-year></span> Sherooq</span>
+    <span>News headlines are fetched live from Google News on every visit.</span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
