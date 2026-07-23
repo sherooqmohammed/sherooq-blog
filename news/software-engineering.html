@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kerala News — Sherooq</title>
+<title>Software Engineering News — Sherooq</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -17,18 +17,18 @@
       <a href="../blog.html">Blog</a>
       <a href="tech.html">Tech</a>
       <a href="ai.html">AI</a>
-      <a href="software-engineering.html">Software Eng</a>
+      <a href="software-engineering.html" class="active">Software Eng</a>
       <a href="dev-tools.html">Dev Tools</a>
-      <a href="kerala.html" class="active">Kerala</a>
+      <a href="kerala.html">Kerala</a>
       <a href="uae.html">UAE</a>
       <a href="germany.html">Germany</a>
     </nav>
   </div>
 </header>
 
-<section class="news-page-header kerala-accent">
+<section class="news-page-header swe-accent">
   <div class="wrap">
-    <h1>Kerala News</h1>
+    <h1>Software Engineering News</h1>
     <div class="news-meta-row">
       <span id="news-meta">Loading latest headlines…</span>
       <button class="refresh-btn" id="refresh-btn">Refresh now</button>
@@ -50,14 +50,14 @@
 <script src="../js/main.js"></script>
 <script src="../js/news.js"></script>
 <script>
-  var FEED_URL = "https://news.google.com/rss/search?q=Kerala%20when:2d&hl=en-IN&gl=IN&ceid=IN:en";
+  var FEED_URL = "https://news.google.com/rss/search?q=software%20engineering%20when:2d&hl=en-US&gl=US&ceid=US:en";
   var container = document.getElementById("news-container");
   var meta = document.getElementById("news-meta");
 
-  BlogNews.renderFullList(container, meta, "kerala", FEED_URL, false);
+  BlogNews.renderFullList(container, meta, "swe", FEED_URL, false);
 
   document.getElementById("refresh-btn").addEventListener("click", function () {
-    BlogNews.renderFullList(container, meta, "kerala", FEED_URL, true);
+    BlogNews.renderFullList(container, meta, "swe", FEED_URL, true);
   });
 </script>
 </body>
