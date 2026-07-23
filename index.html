@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sherooq — Blog</title>
+<meta name="description" content="Personal blog with daily-updating Tech, Kerala, UAE, and Germany news sections.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="site-title">Sherooq</a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="news/tech.html">Tech</a>
+      <a href="news/kerala.html">Kerala</a>
+      <a href="news/uae.html">UAE</a>
+      <a href="news/germany.html">Germany</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Hi, I'm Sherooq.</h1>
+    <p>This is my personal blog — plus four news sections (Tech, Kerala, UAE, and Germany) that refresh automatically every day. Edit this intro in <code>index.html</code> to make it your own.</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="section-heading">
+      <h2>Latest posts</h2>
+      <a class="see-all" href="blog.html">See all posts →</a>
+    </div>
+    <div class="post-list">
+      <div class="post-item">
+        <div class="post-date">July 20, 2026</div>
+        <h3><a href="posts/post-2.html">How This Site Keeps Its News Sections Fresh</a></h3>
+        <p class="excerpt">A quick look at how the Tech, Kerala, UAE, and Germany sections update themselves automatically, with no manual work.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-date">July 12, 2026</div>
+        <h3><a href="posts/post-1.html">Why I Started This Blog</a></h3>
+        <p class="excerpt">A sample first post — replace this with your own introduction and story.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <h2>Today's news</h2>
+    </div>
+    <div class="news-grid">
+
+      <div class="news-card tech-accent">
+        <h3><a href="news/tech.html">Tech</a></h3>
+        <div id="home-tech" class="loading">Loading…</div>
+      </div>
+
+      <div class="news-card kerala-accent">
+        <h3><a href="news/kerala.html">Kerala</a></h3>
+        <div id="home-kerala" class="loading">Loading…</div>
+      </div>
+
+      <div class="news-card uae-accent">
+        <h3><a href="news/uae.html">UAE</a></h3>
+        <div id="home-uae" class="loading">Loading…</div>
+      </div>
+
+      <div class="news-card germany-accent">
+        <h3><a href="news/germany.html">Germany</a></h3>
+        <div id="home-germany" class="loading">Loading…</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="about-box">
+      <h2 style="margin-top:0; font-family:var(--font-serif);">About</h2>
+      <p style="margin-bottom:0; color:var(--color-text-muted);">Write a short bio here — who you are, what you write about, and how people can reach you. Edit this block directly in <code>index.html</code>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; <span data-year></span> Sherooq</span>
+    <span>News headlines are fetched live from Google News on every visit.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/news.js"></script>
+<script>
+  var FEEDS = {
+    tech: "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en",
+    kerala: "https://news.google.com/rss/headlines/section/geo/Kerala?hl=en-IN&gl=IN&ceid=IN:en",
+    uae: "https://news.google.com/rss/headlines/section/geo/United%20Arab%20Emirates?hl=en-AE&gl=AE&ceid=AE:en",
+    germany: "https://news.google.com/rss/headlines/section/geo/Germany?hl=en-US&gl=DE&ceid=DE:en"
+  };
+  BlogNews.renderHomeCard(document.getElementById("home-tech"), "tech", FEEDS.tech, 4);
+  BlogNews.renderHomeCard(document.getElementById("home-kerala"), "kerala", FEEDS.kerala, 4);
+  BlogNews.renderHomeCard(document.getElementById("home-uae"), "uae", FEEDS.uae, 4);
+  BlogNews.renderHomeCard(document.getElementById("home-germany"), "germany", FEEDS.germany, 4);
+</script>
+</body>
+</html>

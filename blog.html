@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Sherooq</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="site-title">Sherooq</a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="news/tech.html">Tech</a>
+      <a href="news/kerala.html">Kerala</a>
+      <a href="news/uae.html">UAE</a>
+      <a href="news/germany.html">Germany</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap section">
+  <div class="page-header" style="border:none; padding-top:0;">
+    <h1>Blog</h1>
+    <p>All posts, newest first.</p>
+  </div>
+
+  <div class="post-list" style="margin-top:24px;">
+    <div class="post-item">
+      <div class="post-date">July 20, 2026</div>
+      <h3><a href="posts/post-2.html">How This Site Keeps Its News Sections Fresh</a></h3>
+      <p class="excerpt">A quick look at how the Tech, Kerala, UAE, and Germany sections update themselves automatically, with no manual work.</p>
+      <span class="tag-pill">Site notes</span>
+    </div>
+
+    <div class="post-item">
+      <div class="post-date">July 12, 2026</div>
+      <h3><a href="posts/post-1.html">Why I Started This Blog</a></h3>
+      <p class="excerpt">A sample first post — replace this with your own introduction and story.</p>
+      <span class="tag-pill">Personal</span>
+    </div>
+  </div>
+
+  <p style="margin-top:32px; color:var(--color-text-muted); font-size:0.9rem;">
+    To add a new post: copy <code>posts/post-1.html</code>, rename it, edit the content, then add a card for it here. See the README for details.
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; <span data-year></span> Sherooq</span>
+    <span>News headlines are fetched live from Google News on every visit.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
