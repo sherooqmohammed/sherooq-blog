@@ -18,22 +18,28 @@ news/                The four news sections
 css/style.css         All styling
 js/main.js            Nav menu + small helpers
 js/news.js            Fetches and renders live headlines
+api/news.js           Vercel serverless proxy for fetching feeds (see below)
 ```
 
 ## How the news sections work
 
-There's no backend, database, or API key involved. Each news page loads a live
-Google News RSS feed for its topic/region directly in the visitor's browser
-using `js/news.js`. Because the fetch happens on every page load, the
-headlines are always current — "daily updates" happen automatically, with no
-manual work and nothing to schedule.
+Each news page loads a live Google News RSS feed for its topic/region using
+`js/news.js`. Because the fetch happens on every page load, the headlines are
+always current — "daily updates" happen automatically, with no manual work
+and nothing to schedule.
 
+- On Vercel, requests go through `api/news.js`, a small serverless function
+  that fetches the feed server-side and returns it — this avoids the
+  reliability/rate-limit issues of public CORS-proxy services entirely. If
+  you open the site as a local file (no server), or if the API route is ever
+  unavailable, it automatically falls back to public proxies
+  (`allorigins.win`, `rss2json.com`, `corsproxy.io`) so the page still works.
+- Each attempt has a 6-second timeout, so a slow/unresponsive source doesn't
+  stall the page — it moves to the next one automatically.
 - Headlines are cached in the browser for **1 hour** so repeat visits load
   instantly. Click **"Refresh now"** on any news page to force a fresh pull.
-- If the network is unavailable, the page falls back to the last successfully
-  loaded headlines and says so.
-- Each page tries three different free services in order (rss2json, then two
-  CORS proxies) so a single service being down won't break the page.
+- If every source fails, the page falls back to the last successfully loaded
+  headlines and says so.
 
 ### Changing what each section covers
 
