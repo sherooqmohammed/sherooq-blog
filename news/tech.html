@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech News — Sherooq</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="site-title">Sherooq</a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav">
+      <a href="../index.html">Home</a>
+      <a href="../blog.html">Blog</a>
+      <a href="tech.html" class="active">Tech</a>
+      <a href="kerala.html">Kerala</a>
+      <a href="uae.html">UAE</a>
+      <a href="germany.html">Germany</a>
+    </nav>
+  </div>
+</header>
+
+<section class="news-page-header tech-accent">
+  <div class="wrap">
+    <h1>Tech News</h1>
+    <div class="news-meta-row">
+      <span id="news-meta">Loading latest headlines…</span>
+      <button class="refresh-btn" id="refresh-btn">Refresh now</button>
+    </div>
+  </div>
+</section>
+
+<main class="wrap section">
+  <div id="news-container"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; <span data-year></span> Sherooq</span>
+    <span>Headlines via Google News RSS · not written or edited by Sherooq</span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/news.js"></script>
+<script>
+  var FEED_URL = "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en";
+  var container = document.getElementById("news-container");
+  var meta = document.getElementById("news-meta");
+
+  BlogNews.renderFullList(container, meta, "tech", FEED_URL, false);
+
+  document.getElementById("refresh-btn").addEventListener("click", function () {
+    BlogNews.renderFullList(container, meta, "tech", FEED_URL, true);
+  });
+</script>
+</body>
+</html>
